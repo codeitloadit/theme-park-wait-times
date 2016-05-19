@@ -3,18 +3,50 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Home</ion-title>
+  <ion-title>CB Mobile</ion-title>
 </ion-navbar>
 
 
 <ion-content padding>
+  <ion-segment [(ngModel)]="genderTab">
+    <ion-segment-button value="a">Featured</ion-segment-button>
+    <ion-segment-button value="f">Female</ion-segment-button>
+    <ion-segment-button value="m">Male</ion-segment-button>
+    <ion-segment-button value="c">Couple</ion-segment-button>
+    <ion-segment-button value="s">Trans</ion-segment-button>
+  </ion-segment>
 
-  <h3>Home</h3>
-  <p>
-     Get it started!
-  </p>
-  <p>
-    <button primary menuToggle>Toggle Menu</button>
-  </p>
+
+    <ion-card *ngFor="#room of rooms">
+
+      <img src="{{room.image_url_360x270}}"/>
+
+      <ion-card-content>
+        <h1 class="card-title">{{room.username}}</h1>
+        <p>{{room.room_subject}}</p>
+      </ion-card-content>
+
+      <ion-row no-padding>
+        <ion-col>
+          <button clear small>
+            <ion-icon name='person'></ion-icon>
+            {{room.age}}{{room.gender | uppercase}}
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button clear small>
+            <ion-icon name='timer'></ion-icon>
+            {{(room.seconds_online - 25240) / 60 | number:'2.0-0'}} mins
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button clear small>
+            <ion-icon name='eye'></ion-icon>
+            {{room.num_users}}
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
 
 </ion-content>
