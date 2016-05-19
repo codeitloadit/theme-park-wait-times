@@ -36,7 +36,8 @@
         <ion-col text-center>
           <button clear small>
             <ion-icon name='timer'></ion-icon>
-            {{(room.seconds_online - 25240) / 60 | number:'2.0-0'}} mins
+            {{(room.seconds_online - 25240) / 60}} mins
+            <!-- {{(room.seconds_online - 25240) / 60 | number:'2.0-0'}} mins -->
           </button>
         </ion-col>
         <ion-col text-right>
